@@ -1,0 +1,21 @@
+<workflow-app xmlns="uri:oozie:workflow:0.4" name="WalMartsparkjob-wf">
+    <start to="spark-node"/>	
+   	<action name="spark-node">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+        	<host>${edge_node_user}@${edge_node_host}</host>
+        	<command>${edge_node_script_path}/sparkjob.sh</command>
+	</ssh>
+	<ok to="end"/>
+    <error to="sendEmailKill"/>
+    </action> 	
+	<action name="sendEmailKill">
+        <email xmlns="uri:oozie:email-action:0.1">
+            <to>${emailToAddress1}</to>
+            <subject>Status of WalMartsparkJob workflow ${wf:id()}</subject>
+            <body>The WalMartsparkjob workflow ${wf:id()} had issues and was killed.</body>
+        </email>
+        <ok to="end"/>
+        <error to="end"/>
+    </action>	
+	<end name="end"/>	
+ </workflow-app>

@@ -1,0 +1,37 @@
+root
+ |-- recipe_id: integer (nullable = true)
+ |-- recipe_name: string (nullable = true)
+ |-- description: string (nullable = true)
+ |-- ingredient: string (nullable = true)
+ |-- active: boolean (nullable = true)
+ |-- created_date: timestamp (nullable = true)
+ |-- updated_date: timestamp (nullable = true)
+
++---------+-----------+---------------+------------+------+---------------------+---------------------+
+|recipe_id|recipe_name|description    |ingredient  |active|created_date         |updated_date         |
++---------+-----------+---------------+------------+------+---------------------+---------------------+
+|1        |pasta      |Italian pasta  |tomato sauce|true  |2018-01-09 10:00:57.0|2018-01-10 13:00:57.0|
+|1        |pasta      |null           |cheese      |true  |2018-01-09 10:10:57.0|2018-01-10 13:00:57.0|
+|2        |lasagna    |layered lasagna|cheese      |true  |2018-01-09 10:00:57.0|2018-01-10 10:00:57.0|
+|2        |lasagna    |layered lasagna|blue cheese |false |2018-01-09 10:00:57.0|2018-01-10 14:00:57.0|
+|1        |pasta      |Italian pasta  |tomato sauce|true  |2017-01-09 10:00:57.0|2017-01-10 13:00:57.0|
+|1        |pasta      |null           |cheese      |true  |2017-01-09 10:10:57.0|2018-01-10 13:00:57.0|
+|2        |lasagna    |layered lasagna|cheese      |true  |2017-01-09 10:00:57.0|2018-01-10 13:00:57.0|
+|2        |lasagna    |layered lasagna|blue cheese |false |2017-01-09 10:00:57.0|2018-01-10 14:00:57.0|
++---------+-----------+---------------+------------+------+---------------------+---------------------+
+
++---------------+-----------+-------+
+|aggregation_key|recipe_name|counter|
++---------------+-----------+-------+
+|2018-01-10-13  |lasagna    |1      |
+|2017-01-10-13  |pasta      |1      |
+|2018-01-10-10  |lasagna    |1      |
+|2018-01-10-14  |lasagna    |2      |
+|2018-01-10-13  |pasta      |3      |
++---------------+-----------+-------+
+
++---------------+-------+
+|aggregation_key|counter|
++---------------+-------+
+|2018-10        |1      |
++---------------+-------+

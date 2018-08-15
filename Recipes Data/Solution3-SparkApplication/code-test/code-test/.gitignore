@@ -1,0 +1,9 @@
+/.idea/
+/target/
+/project/project/
+/project/target/
+classes/
+
+*.class
+.classpath
+.project

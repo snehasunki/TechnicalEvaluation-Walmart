@@ -1,0 +1,7 @@
+<coordinator-app name="WalMartsparkjob_scheduler" frequency="${frequency}" start="${start_time}" end="${end_time}" timezone="${timezone}" xmlns="uri:oozie:coordinator:0.1">
+   <action>
+      <workflow>
+         <app-path>${workflowpath}</app-path>
+      </workflow>
+   </action>
+</coordinator-app>
